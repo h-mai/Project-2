@@ -20,6 +20,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       defaultValue: 0
     },
+    expires: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
     // 0: pending, 1: approved, 2: ended
     status: {
       type: DataTypes.TINYINT,
