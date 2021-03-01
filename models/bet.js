@@ -1,23 +1,23 @@
 module.exports = function(sequelize, DataTypes) {
-  const Bet = sequelize.define("Bets", {
+  const Bet = sequelize.define("Bet", {
     user1: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     user2: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     wager: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     votes1: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       defaultValue: 0
     },
     votes2: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       defaultValue: 0
     },
     // 0: pending, 1: approved, 2: ended
