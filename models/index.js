@@ -26,11 +26,15 @@ fs
 
 Object.keys(db).forEach(function(modelName) {
   if (db[modelName].associate) {
+    console.log("Hello world")
     db[modelName].associate(db);
   }
 });
 
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+// db.Bet.hasOne(db.User)
 
 module.exports = db;

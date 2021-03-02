@@ -1,12 +1,26 @@
 module.exports = function(sequelize, DataTypes) {
   const Bet = sequelize.define("Bet", {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     user1: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: "Users",
+        key: "id"
+      }
     },
     user2: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: "Users",
+        key: "id"
+      }
     },
     wager: {
       type: DataTypes.INTEGER,
