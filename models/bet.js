@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   const Bet = sequelize.define("Bet", {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true
+    },
     user1: {
       type: DataTypes.INTEGER,
       allowNull: false
