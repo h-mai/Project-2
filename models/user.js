@@ -5,9 +5,10 @@ module.exports = function(sequelize, DataTypes) {
   const User = sequelize.define("User", {
     // The email cannot be null, and must be a proper email before creation
     id: {
-      type: DataTypes.INTEGER,
+      allowNull: false,
       autoIncrement: true,
-      allowNull: false
+      primaryKey: true,
+      type: DataTypes.INTEGER
     },
     username: {
       type: DataTypes.STRING,

@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run lint",
-    "mocha": "cross-env NODE_ENV=test mocha 'test/**/*.js' --recursive --exit",
+    "mocha": "cross-env NODE_ENV=test mocha 'test/**/*.js' --recursive --exit --trace-warnings",
     "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
