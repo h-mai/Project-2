@@ -1,5 +1,3 @@
-const { Sequelize } = require(".");
-
 module.exports = function(sequelize, DataTypes) {
   const Bet = sequelize.define("Bet", {
     id: {
