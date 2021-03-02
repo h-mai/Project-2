@@ -1,5 +1,13 @@
+const { Sequelize } = require(".");
+
 module.exports = function(sequelize, DataTypes) {
   const Bet = sequelize.define("Bet", {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER
+    },
     user1: {
       type: DataTypes.INTEGER,
       allowNull: false
