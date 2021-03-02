@@ -67,7 +67,7 @@ module.exports = function(app) {
     });
 
     // Send an email to other user for them to verify
-    const betId = bet.id;
+    // const betId = bet.id;
 
     // Respond with the created bet as a json object
     res.json(bet);
