@@ -8,11 +8,19 @@ module.exports = function(sequelize, DataTypes) {
     },
     user1: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: "Users",
+        key: "id"
+      }
     },
     user2: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: "Users",
+        key: "id"
+      }
     },
     wager: {
       type: DataTypes.INTEGER,
