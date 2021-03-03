@@ -1,6 +1,8 @@
 // Requiring necessary npm packages
 const express = require("express");
 const session = require("express-session");
+const cron = require("node-cron");
+const expcheck = require("./helpers/expirationcheck");
 // Requiring passport as we've configured it
 const passport = require("./config/passport");
 
@@ -36,4 +38,9 @@ db.sequelize.sync().then(() => {
       PORT
     );
   });
+});
+
+// Call expcheck() every 1 minute.
+cron.schedule("*/1 * * * *", () => {
+  expcheck();
 });
