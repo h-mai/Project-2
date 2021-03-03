@@ -34,7 +34,6 @@ module.exports = app => {
       },
       raw: true
     }).then(oneBet => {
-      console.log(oneBet)
       res.render("one-bet", {
         data: oneBet
       });
