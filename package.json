@@ -1,7 +1,7 @@
 {
   "name": "betti",
   "version": "1.0.0",
-  "description": "",
+  "description": "PsuedoCode",
   "main": "server.js",
   "scripts": {
     "test": "npm run lint",
@@ -37,5 +37,16 @@
     "eslint-plugin-prettier": "^2.6.2",
     "mocha": "^5.2.0",
     "prettier": "^1.13.7"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h-mai/Project-2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/h-mai/Project-2/issues"
+  },
+  "homepage": "https://github.com/h-mai/Project-2#readme"
 }

@@ -1,56 +1,54 @@
+
+
 <div class="card">
 	<div class="card-body">
 		<div class="row">
 
 			<!-- the left side of the bet card -->
-			<div class="col-md-4">
+			<div class="col-md-5">
 				<div class="row">
 					<div class="col-md-4">
-						vote thumb and
-
-						<button type="button" class="btn btn-primary">
-							30 points
-						</button>
-
-						<span class="badge rounded-pill bg-warning text-dark">upvotes</span>
+						<span class="badge rounded-pill bg-warning text-dark"><i class="fas fa-thumbs-up fa-flip-horizontal"></i> {{dataValues.votes1}} upvotes</span>
 					</div>
 					<div class="col-md-4">
-						<p>Adrian bet he can watch the entire netflix catalogue in year.</p>
+						<p><u>{{dataValues.user1}}</u> bet they can watch the entire Netflix catalogue in a year.</p>
 					</div>
 					<div class="col-md-4">
 						<span class="badge rounded-pill bg-light text-dark">
-							avatar and name
+							avatar and name {{dataValues.user1}}
 						</span>
 					</div>
 				</div>
 			</div>
 
 			<!-- the centre of the bet card -->
-			<div class="col-md-2">
+			<div class="col-md-2 d-flex justify-content-center">
 				<div class="row">
 					<div class="col-md-12">
-						Big V
-						and then
+						<h1 class="heading-centered">V</h1>
+						<button type="button" class="btn btn-primary">
+							{{dataValues.wager}}
+						</button>
 					</div>
 				</div>
 			</div>
 
 			<!-- the right side of the bet card.-->
-			<div class="col-md-4">
+			<div class="col-md-5">
 				<div class="row">
 					<div class="col-md-4">
 						<span class="badge rounded-pill bg-light text-dark">
-							avatar and name
+							avatar and name {{dataValues.user2}}
 						</span>
+
 					</div>
 
 					<div class="col-md-4">
-						<p>This bet is pending.</p>
+						<p>This bet is pending. (status={{dataValues.status}})</p>
 					</div>
 
 					<div class="col-md-4">
-						vote thumb and
-						<span class="badge rounded-pill bg-warning text-dark">upvotes</span>
+						<span class="badge rounded-pill bg-warning text-dark">{{dataValues.votes2}} upvotes <i class="fas fa-thumbs-up"></i></span>
 					</div>
 
 				</div>
