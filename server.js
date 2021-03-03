@@ -37,6 +37,7 @@ db.sequelize.sync().then(() => {
   });
 });
 
+// Call expcheck() every 1 minute.
 cron.schedule("*/1 * * * *", () => {
   expcheck();
 });
