@@ -1,6 +1,10 @@
 // API routes required for bet management.
 const db = require("../models");
 
+// Require in the API for sending emails
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 module.exports = app => {
   // For all bets
   app.get("/bets", (req, res) => {
@@ -49,32 +53,33 @@ module.exports = app => {
     const expires = req.body.expires;
 
     // Sequelize the new bet
-    const bet = await db.Bet.create({
+    db.Bet.create({
       user1: user1,
       user2: user2,
       wager: wager,
       expires: expires
+    }).then(bet => {
+      // Create the email to be sent
+      const emailMsg = {
+        to: user2,
+        from: "domenicbeall2@gmail.com",
+        subject: "You've been challenged to a friendly bet!",
+        html: `<a href="/api/accept_bet/${bet.id}">Click here to accept the bet</a>`
+      };
+
+      // Send the email using sgmail
+      sgMail
+        .send(emailMsg)
+        .then(() => {
+          console.log("Email sent successfully!");
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
+      // Respond with the created bet as a json object
+      res.json(bet);
     });
-
-    // Send an email to other user for them to verify
-    const emailMsg = {
-      to: user2,
-      from: "domenicbeall2@gmail.com",
-      subject: "You've been challenged to a friendly bet!",
-      html: `<a href="/api/accept_bet/${bet.id}">Click here to accept the bet</a>`
-    };
-
-    sgMail
-      .send(emailMsg)
-      .then(() => {
-        console.log("Email sent successfully!");
-      })
-      .catch(error => {
-        console.log(error);
-      });
-
-    // Respond with the created bet as a json object
-    res.json(bet);
   });
 
   // To accept a bet
