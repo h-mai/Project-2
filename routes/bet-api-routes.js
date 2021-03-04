@@ -96,4 +96,26 @@ module.exports = app => {
       res.json(queryresult);
     });
   });
+
+  app.get("/api/upvote/${dataId}", (req, res) => {
+    const voteDir = req.body.dataVote;
+
+    db.Bet.findOne({
+      where: {
+        id: req.params.betId
+      },
+      raw: true
+    }).then(bet => {
+      if (voteDir === "user1") {
+        bet.votes1++;
+      } else if (voteDir === "user2") {
+        bet.votes2++;
+      }
+
+      oneBet.save();
+
+      res.json(bet);
+    });
+  });
+
 };
