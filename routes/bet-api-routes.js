@@ -102,23 +102,23 @@ module.exports = app => {
     });
   });
 
-  app.get("/api/upvote/${dataId}", (req, res) => {
+  app.put("/api/upvote/:id", (req, res) => {
+    const betId = req.params.id;
     const voteDir = req.body.dataVote;
+    // set a default variable to update.
+    let updateMe = { votes1: +1 };
 
-    db.Bet.findOne({
+    // if the vote is for the other user we can change it.
+    if (voteDir === "user2") {
+      updateMe = { votes2: +1 };
+    }
+
+    db.Bet.increment(updateMe, {
       where: {
-        id: req.params.betId
-      },
-      raw: true
-    }).then(bet => {
-      if (voteDir === "user1") {
-        bet.votes1++;
-      } else if (voteDir === "user2") {
-        bet.votes2++;
+        id: betId
       }
-
-      oneBet.save();
-      res.json(bet);
+    }).then(queryResult => {
+      res.json(queryResult);
     });
   });
 };

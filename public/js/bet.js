@@ -28,9 +28,9 @@ if (upVoteButtons) {
       }).then(response => {
         // Check the response is all aok.
         if (response.ok) {
-          location("/");
+          location.reload("/");
         } else {
-          alert("Whooston, we godda problem");
+          console.log(response);
         }
       });
     });
