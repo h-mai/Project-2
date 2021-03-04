@@ -11,11 +11,11 @@
 						<span class="badge rounded-pill bg-warning text-dark"><button type="button" class="upvote" data-id="{{dataValues.id}}" data-vote="1"><i class="fas fa-thumbs-up fa-flip-horizontal"></i> {{dataValues.votes1}} upvotes</button></span>
 					</div>
 					<div class="col-md-4">
-						<p><u>{{dataValues.user1}}</u> bet they can watch the entire Netflix catalogue in a year.</p>
+						<p><u>{{bettors.dataValues.username}}</u> {{dataValues.betTitle}}</p>
 					</div>
 					<div class="col-md-4">
 						<span class="badge rounded-pill bg-light text-dark">
-							avatar and name {{dataValues.user1}}
+							avatar {{bettors.dataValues.username}}
 						</span>
 					</div>
 				</div>
@@ -38,7 +38,7 @@
 				<div class="row">
 					<div class="col-md-4">
 						<span class="badge rounded-pill bg-light text-dark">
-							avatar and name {{dataValues.user2}}
+							avatar and {{bettees.dataValues.username}}
 						</span>
 
 					</div>

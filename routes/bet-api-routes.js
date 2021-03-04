@@ -9,11 +9,27 @@ module.exports = app => {
   // For all bets
   app.get("/bets", (req, res) => {
     db.Bet.findAll({
-      order: [["expires", "DESC"]]
+      order: [["expires", "DESC"]],
+      include: [
+        {
+          model: db.User,
+          as: "bettors",
+          attributes: ["username"]
+        },
+        {
+          model: db.User,
+          as: "bettees",
+          attributes: ["username"]
+        }
+      ],
+      nested: true,
+      raw: false
     }).then(allBets => {
-      res.render("all-bets", {
+      const hbsObject = {
         data: allBets
-      });
+      };
+      console.log(hbsObject);
+      res.render("all-bets", hbsObject);
     });
   });
 
