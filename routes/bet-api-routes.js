@@ -117,5 +117,4 @@ module.exports = app => {
       res.json(bet);
     });
   });
-
 };
