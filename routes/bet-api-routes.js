@@ -89,7 +89,7 @@ module.exports = app => {
     //TODO: Make it so the route checks the logged in user ID against the user ID of the person that's supposed to be accepting the bet
 
     // Find the bet with and ID equal to betId and change its status from pending to accepted
-    Bet.update(
+    db.Bet.update(
       { status: 1 },
       {
         where: {
