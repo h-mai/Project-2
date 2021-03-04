@@ -113,7 +113,6 @@ module.exports = app => {
       }
 
       oneBet.save();
-
       res.json(bet);
     });
   });
