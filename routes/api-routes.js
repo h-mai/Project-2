@@ -2,10 +2,6 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
-// Require in the API for sending emails
-const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -54,5 +50,4 @@ module.exports = function(app) {
       });
     }
   });
-
 };
