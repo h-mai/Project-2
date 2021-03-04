@@ -2,6 +2,7 @@
 const express = require("express");
 const session = require("express-session");
 // Requiring passport as we've configured it
+require("dotenv").config();
 const passport = require("./config/passport");
 
 // Setting up port and requiring models for syncing
@@ -28,7 +29,7 @@ require("./routes/api-routes.js")(app);
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
     console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+      "==> 🌎  Listening on port %s. Visit http://localhost:8080/ in your browser.",
       PORT,
       PORT
     );
