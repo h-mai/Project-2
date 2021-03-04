@@ -2,3 +2,15 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+.heading-centered {
+  text-align: center;
+}
+
+.upvote {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+}

@@ -2,10 +2,6 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
-// Require in the API for sending emails
-const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -53,60 +49,5 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
-  });
-
-  app.get("/api/create_bet", (req, res) => {
-    // Get all of the bet details from the body
-    const user1 = req.body.user1;
-    const user2 = req.body.user2;
-    const wager = req.body.wager;
-    const expires = req.body.expires;
-
-    // Sequelize the new bet
-    const bet = Bet.create({
-      user1: user1,
-      user2: user2,
-      wager: wager,
-      expires: expires
-    });
-
-    // Send an email to other user for them to verify
-    const emailMsg = {
-      to: user2,
-      from: "domenicbeall2@gmail.com",
-      subject: "You've been challenged to a friendly bet!",
-      html: `<a href="/api/accept_bet/${bet.id}">Click here to accept the bet</a>`
-    };
-
-    sgMail
-      .send(emailMsg)
-      .then(() => {
-        console.log("Email sent successfully!");
-      })
-      .catch(error => {
-        console.log(error);
-      });
-
-    // Respond with the created bet as a json object
-    res.json(bet);
-  });
-
-  app.get("/api/accept_bet/:id", (req, res) => {
-    const betId = req.params.id;
-
-    //TODO: Make it so the route checks the logged in user ID against the user ID of the person that's supposed to be accepting the bet
-
-    // Find the bet with and ID equal to betId and change its status from pending to accepted
-    Bet.update(
-      { status: 1 },
-      {
-        where: {
-          id: betId
-        }
-      }
-    ).then(queryresult => {
-      // Send the result of the query back
-      res.json(queryresult);
-    });
   });
 };
