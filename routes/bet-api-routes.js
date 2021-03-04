@@ -28,7 +28,6 @@ module.exports = app => {
       const hbsObject = {
         data: allBets
       };
-      console.log(hbsObject);
       res.render("all-bets", hbsObject);
     });
   });
