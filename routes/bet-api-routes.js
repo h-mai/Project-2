@@ -9,11 +9,16 @@ module.exports = app => {
   // For all bets
   app.get("/bets", (req, res) => {
     db.Bet.findAll({
-      order: [["expires", "DESC"]]
+      order: [["expires", "DESC"]],
+      include: {
+        model: db.User
+      },
+      raw: false,
+      nested: true
     }).then(allBets => {
-      res.render("all-bets", {
-        data: allBets
-      });
+      console.log(allBets);
+
+      res.render("all-bets", allBets);
     });
   });
 
