@@ -47,6 +47,7 @@ module.exports = app => {
   // Create a bet
   app.post("/api/create_bet", async (req, res) => {
     // Get all of the bet details from the body
+    const betTitle = req.body.betTitle;
     const user1 = req.body.user1;
     const user2 = req.body.user2;
     const wager = req.body.wager;
@@ -54,6 +55,7 @@ module.exports = app => {
 
     // Sequelize the new bet
     db.Bet.create({
+      betTitle: betTitle,
       user1: user1,
       user2: user2,
       wager: wager,
