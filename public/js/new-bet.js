@@ -3,20 +3,16 @@
 const betSubmitButton = document.querySelector("#goTime");
 
 if (betSubmitButton) {
-  alert("okies");
-  betSubmitButton.addEventListener("submit", e => {
-    alert("samesies");
+  betSubmitButton.addEventListener("click", e => {
     e.preventDefault();
     // We need the betters userId
     const newBet = {
-      user1: "6",
-      user2: "7",
-      wager: document.getElementById("wager"),
-      betTitle: document.getElementById("betTitle"),
-      expires: document.getElementById("expiration")
+      user1: document.getElementById("betAgainst").value,
+      user2: document.getElementById("betAgainst").value,
+      wager: document.getElementById("wager").value,
+      betTitle: document.getElementById("betTitle").value,
+      expires: document.getElementById("expiration").value
     };
-
-    console.log(newBet);
 
     fetch("/api/create_bet", {
       method: "POST",
@@ -30,7 +26,6 @@ if (betSubmitButton) {
       if (response.ok) {
         document.getElementById("create-bet").value = "";
       } else {
-        alert("whoopsies");
         console.log(response);
       }
     });
