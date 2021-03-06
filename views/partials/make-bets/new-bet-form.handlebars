@@ -5,11 +5,18 @@
 		<small id="betTitleHelp" class="form-text text-muted">Put in a descriptive title for your bet.</small>
 	</div>
 
+	<!-- TODO this can be removed once passport is implemented correctly-->
+	<div class="form-group">
+		<label for="betFrom">Who are you?</label>
+		<input type="text" class="form-control bet-against" id="betFrom" aria-describedby="betFromHelp" placeholder="Who is the bet with?">
+		<small id="betFromHelp" class="form-text text-muted">Select your name from the list below</small>
+	</div>
+	<!-- end removal section -->
+
 	<div class="form-group">
 		<label for="betAgainst">Who are you betting?</label>
 		<input type="text" class="form-control bet-against" id="betAgainst" aria-describedby="betAgainstHelp" placeholder="Who is the bet with?">
 		<small id="betAgainstHelp" class="form-text text-muted">Select the person you're betting against.</small>
-<!--		<input type="text" id="betAgainstId">-->
 	</div>
 	<div class="form-group">
 		<label for="wager">How many points are you betting?</label>

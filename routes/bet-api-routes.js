@@ -63,50 +63,56 @@ module.exports = app => {
   app.post("/api/create_bet", async (req, res) => {
     // Get all of the bet details from the body
     const betTitle = req.body.betTitle;
-    // const user1 = req.user.id;
+    const user1Raw = req.body.user1;
+    // TODO this needs to be sqapped out with athe user id provided by passport.
     const user2Raw = req.body.user2;
     const wager = req.body.wager;
     const expires = req.body.expires;
 
-    console.dir(req.user);
-
-    user2 = db.User.findOne({
+    const users = db.User.findAll({
       where: {
-        username: user2Raw
+        username: [user1Raw, user2Raw]
       },
       raw: true
-    }).then(user2 => {
-      // Sequelize the new bet
-      db.Bet.create({
-        betTitle: betTitle,
-        user1: 1,
-        user2: user2.id,
-        wager: wager,
-        expires: expires
+    })
+      .then(users => {
+        // Need this step to get the bettor / bettee in correct order.
+        // It can be removed when the bettor id is pulled from passport
+        const orderedUsers = {};
+        users.forEach(val => {
+          orderedUsers[val.username] = val.id;
+        });
+        // Sequelize the new bet
+        db.Bet.create({
+          betTitle: betTitle,
+          user1: orderedUsers[user1Raw],
+          user2: orderedUsers[user2Raw],
+          wager: wager,
+          expires: expires
+        });
+      })
+      .then(bet => {
+        // Create the email to be sent
+        const emailMsg = {
+          to: user2Raw,
+          from: "domenicbeall2@gmail.com",
+          subject: "You've been challenged to a friendly bet!",
+          html: `<a href="/api/accept_bet/${bet.id}">Click here to accept the bet</a>`
+        };
+
+        // Send the email using sgmail
+        sgMail
+          .send(emailMsg)
+          .then(() => {
+            console.log("Email sent successfully!");
+          })
+          .catch(error => {
+            console.log(error);
+          });
+
+        // Respond with the created bet as a json object
+        res.json(bet);
       });
-    });
-    // .then(bet => {
-    //   // Create the email to be sent
-    //   const emailMsg = {
-    //     to: user2,
-    //     from: "domenicbeall2@gmail.com",
-    //     subject: "You've been challenged to a friendly bet!",
-    //     html: `<a href="/api/accept_bet/${bet.id}">Click here to accept the bet</a>`
-    //   };
-    //
-    //   // Send the email using sgmail
-    //   sgMail
-    //     .send(emailMsg)
-    //     .then(() => {
-    //       console.log("Email sent successfully!");
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     });
-    //
-    //   // Respond with the created bet as a json object
-    //   res.json(bet);
-    // });
   });
 
   // To accept a bet
