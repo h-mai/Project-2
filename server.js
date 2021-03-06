@@ -4,6 +4,7 @@ const session = require("express-session");
 const cron = require("node-cron");
 const expcheck = require("./helpers/expirationcheck");
 // Requiring passport as we've configured it
+require("dotenv").config();
 const passport = require("./config/passport");
 
 // Init dotenv
@@ -40,7 +41,7 @@ require("./routes/form-api-routes.js")(app);
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
     console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+      "==> 🌎  Listening on port %s. Visit http://localhost:8080/ in your browser.",
       PORT,
       PORT
     );

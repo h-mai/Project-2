@@ -9,11 +9,26 @@ module.exports = app => {
   // For all bets
   app.get("/bets", (req, res) => {
     db.Bet.findAll({
-      order: [["expires", "DESC"]]
+      order: [["expires", "DESC"]],
+      include: [
+        {
+          model: db.User,
+          as: "bettors",
+          attributes: ["username"]
+        },
+        {
+          model: db.User,
+          as: "bettees",
+          attributes: ["username"]
+        }
+      ],
+      nested: true,
+      raw: false
     }).then(allBets => {
-      res.render("all-bets", {
+      const hbsObject = {
         data: allBets
-      });
+      };
+      res.render("all-bets", hbsObject);
     });
   });
 
@@ -91,7 +106,7 @@ module.exports = app => {
     //TODO: Make it so the route checks the logged in user ID against the user ID of the person that's supposed to be accepting the bet
 
     // Find the bet with and ID equal to betId and change its status from pending to accepted
-    Bet.update(
+    db.Bet.update(
       { status: 1 },
       {
         where: {
