@@ -63,40 +63,50 @@ module.exports = app => {
   app.post("/api/create_bet", async (req, res) => {
     // Get all of the bet details from the body
     const betTitle = req.body.betTitle;
-    const user1 = req.body.user1;
-    const user2 = req.body.user2;
+    // const user1 = req.user.id;
+    const user2Raw = req.body.user2;
     const wager = req.body.wager;
     const expires = req.body.expires;
 
-    // Sequelize the new bet
-    db.Bet.create({
-      betTitle: betTitle,
-      user1: user1,
-      user2: user2,
-      wager: wager,
-      expires: expires
-    }).then(bet => {
-      // Create the email to be sent
-      const emailMsg = {
-        to: user2,
-        from: "domenicbeall2@gmail.com",
-        subject: "You've been challenged to a friendly bet!",
-        html: `<a href="/api/accept_bet/${bet.id}">Click here to accept the bet</a>`
-      };
+    console.dir(req.user);
 
-      // Send the email using sgmail
-      sgMail
-        .send(emailMsg)
-        .then(() => {
-          console.log("Email sent successfully!");
-        })
-        .catch(error => {
-          console.log(error);
-        });
-
-      // Respond with the created bet as a json object
-      res.json(bet);
+    user2 = db.User.findOne({
+      where: {
+        username: user2Raw
+      },
+      raw: true
+    }).then(user2 => {
+      // Sequelize the new bet
+      db.Bet.create({
+        betTitle: betTitle,
+        user1: 1,
+        user2: user2.id,
+        wager: wager,
+        expires: expires
+      });
     });
+    // .then(bet => {
+    //   // Create the email to be sent
+    //   const emailMsg = {
+    //     to: user2,
+    //     from: "domenicbeall2@gmail.com",
+    //     subject: "You've been challenged to a friendly bet!",
+    //     html: `<a href="/api/accept_bet/${bet.id}">Click here to accept the bet</a>`
+    //   };
+    //
+    //   // Send the email using sgmail
+    //   sgMail
+    //     .send(emailMsg)
+    //     .then(() => {
+    //       console.log("Email sent successfully!");
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //     });
+    //
+    //   // Respond with the created bet as a json object
+    //   res.json(bet);
+    // });
   });
 
   // To accept a bet
