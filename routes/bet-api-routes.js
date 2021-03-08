@@ -65,7 +65,7 @@ module.exports = app => {
   app.post("/api/create_bet", isAuthenticated, async (req, res) => {
     // Get all of the bet details from the body
     const betTitle = req.body.betTitle;
-    const user1 = req.body.user1;
+    const user1 = req.user.id;
     const user2 = req.body.user2;
     const wager = req.body.wager;
     const expires = req.body.expires;
