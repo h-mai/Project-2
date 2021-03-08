@@ -10,7 +10,7 @@ module.exports = async () => {
           [Op.ne]: 2
         },
         expires: {
-          [Op.lt]: new Date()
+          [Op.lte]: new Date()
         }
       }
     }
