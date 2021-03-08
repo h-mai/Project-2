@@ -62,7 +62,7 @@ module.exports = app => {
   });
 
   // Create a bet
-  app.post("/api/create_bet", async (req, res) => {
+  app.post("/api/create_bet", isAuthenticated, async (req, res) => {
     // Get all of the bet details from the body
     const betTitle = req.body.betTitle;
     const user1 = req.body.user1;
@@ -102,7 +102,7 @@ module.exports = app => {
   });
 
   // To accept a bet
-  app.get("/api/accept_bet/:id", (req, res) => {
+  app.get("/api/accept_bet/:id", isAuthenticated, (req, res) => {
     const betId = req.params.id;
 
     //TODO: Make it so the route checks the logged in user ID against the user ID of the person that's supposed to be accepting the bet
@@ -121,7 +121,7 @@ module.exports = app => {
     });
   });
 
-  app.put("/api/upvote/:id", (req, res) => {
+  app.put("/api/upvote/:id", isAuthenticated, (req, res) => {
     const betId = req.params.id;
     const voteDir = req.body.dataVote;
     // set a default variable to update.
