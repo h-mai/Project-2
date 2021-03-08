@@ -3,7 +3,10 @@ const db = require("../models");
 
 // Require in the API for sending emails
 const sgMail = require("@sendgrid/mail");
+const { response } = require("express");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = app => {
   // For all bets
@@ -137,5 +140,14 @@ module.exports = app => {
     }).then(queryResult => {
       res.json(queryResult);
     });
+  });
+
+  app.get("/api/testing", isAuthenticated, (req, res) => {
+    if (!req.user) {
+      res.send("Error: You must be authenticated to view this.");
+      return;
+    }
+
+    res.send("Congrats!  You are authenticated.");
   });
 };
