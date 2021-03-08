@@ -1,3 +1,7 @@
+.jumbotron {
+  font-family:Arial, Helvetica, sans-serif
+}
+
 form.signup,
 form.login {
   margin-top: 50px;
