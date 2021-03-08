@@ -1,6 +1,9 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const sgMail = require("@sendgrid/mail");
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -24,6 +27,17 @@ module.exports = function(app) {
       password: req.body.password
     })
       .then(() => {
+        sgMail
+          .send({
+            to: req.body.email,
+            from: "noreply@betti.com",
+            subject: "Verify your account",
+            html: "TODO: Add content"
+          })
+          .then(() => {
+            console.log("Email sent");
+          })
+          .catch(e => console.log(e));
         res.redirect(307, "/api/login");
       })
       .catch(err => {
