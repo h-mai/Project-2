@@ -3,7 +3,6 @@ const db = require("../models");
 
 // Require in the API for sending emails
 const sgMail = require("@sendgrid/mail");
-const { response } = require("express");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const isAuthenticated = require("../config/middleware/isAuthenticated");
