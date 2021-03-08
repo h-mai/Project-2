@@ -7,7 +7,7 @@ if (betSubmitButton) {
     e.preventDefault();
     // We need the betters userId
     const newBet = {
-      user1: document.getElementById("betAgainst").value,
+      user1: document.getElementById("betFrom").value,
       user2: document.getElementById("betAgainst").value,
       wager: document.getElementById("wager").value,
       betTitle: document.getElementById("betTitle").value,
