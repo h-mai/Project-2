@@ -6,6 +6,10 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
+    betTitle: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     user1: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -51,6 +55,16 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 0
     }
   });
+  Bet.associate = models => {
+    Bet.belongsTo(models.User, {
+      foreignKey: "user1",
+      as: "bettors"
+    });
+    Bet.belongsTo(models.User, {
+      foreignKey: "user2",
+      as: "bettees"
+    });
+  };
 
   return Bet;
 };
