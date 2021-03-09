@@ -35,8 +35,11 @@ module.exports = app => {
   });
   // For all bets
   app.get("/bets/:pageNo?", (req, res) => {
-    const pageOffset = parseInt(req.params.pageNo);
-    db.Bet.findAll({
+    let pageOffset = req.params.pageNo;
+    if (pageOffset) {
+      pageOffset = parseInt(pageOffset);
+    }
+    db.Bet.findAndCountAll({
       limit: 10,
       offset: pageOffset,
       order: [["expires", "DESC"]],
@@ -56,7 +59,8 @@ module.exports = app => {
       raw: false
     }).then(allBets => {
       const hbsObject = {
-        data: allBets
+        data: allBets,
+        pageNo: pageOffset
       };
       res.render("all-bets", hbsObject);
     });
