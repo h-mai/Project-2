@@ -1,6 +1,9 @@
+{{> page-layouts/navbar}}
+
 <!--View multiple bets-->
 <!--including all bets (sports, popular, fun, work etc), filtered bets, my bets-->
 {{> make-bets/new-bet-form}}
+
 <!--A Row for the filters.-->
 <div class="row">
 	<div class="col-md-12">
@@ -13,10 +16,10 @@
 	<!-- If layout option one, split this into two columns.-->
 
 	<div class="col-md-12">
-	<!-- Display each 'bet card' here-->
-			{{#each data}}
-				{{> view-bets/bet-block}}
-			{{/each}}
+		<!-- Display each 'bet card' here-->
+		{{#each data}}
+			{{> view-bets/bet-block}}
+		{{/each}}
 	</div>
 </div>
 
@@ -26,3 +29,5 @@
 		<p>1 2 3 4 5 6 7 8 9 10</p>
 	</div>
 </div>
+
+{{> page-layouts/footer}}
