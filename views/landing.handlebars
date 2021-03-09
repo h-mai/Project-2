@@ -1,0 +1,17 @@
+{{> page-layouts/navbar}}
+
+<img src="assets/images/placeholder_image.png" title="REPLACE ME!" width="1100">
+
+<!--A Row to display all of the results-->
+<div class="row">
+	<!-- If layout option one, split this into two columns.-->
+
+	<div class="col-md-12">
+		<!-- Display each 'bet card' here-->
+		{{#each data}}
+			{{> view-bets/bet-block}}
+		{{/each}}
+	</div>
+</div>
+
+{{> page-layouts/footer}}

@@ -8,6 +8,31 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = app => {
+  app.get("/", (req, res) => {
+    db.Bet.findAll({
+      limit: 3,
+      order: [["createdAt", "DESC"]],
+      include: [
+        {
+          model: db.User,
+          as: "bettors",
+          attributes: ["username"]
+        },
+        {
+          model: db.User,
+          as: "bettees",
+          attributes: ["username"]
+        }
+      ],
+      nested: true,
+      raw: false
+    }).then(allBets => {
+      const hbsObject = {
+        data: allBets
+      };
+      res.render("landing", hbsObject);
+    });
+  });
   // For all bets
   app.get("/bets", (req, res) => {
     db.Bet.findAll({
@@ -70,7 +95,7 @@ module.exports = app => {
     const wager = req.body.wager;
     const expires = req.body.expires;
 
-    const users = db.User.findAll({
+    db.User.findAll({
       where: {
         username: [user2Raw]
       },
