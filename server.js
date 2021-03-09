@@ -19,7 +19,10 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-app.use("/bootstrap",express.static(__dirname + "node_modules/bootstrap/dist"));
+app.use(
+  "/bootstrap",
+  express.static(__dirname + "node_modules/bootstrap/dist")
+);
 // We need to use sessions to keep track of our user's login status
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
