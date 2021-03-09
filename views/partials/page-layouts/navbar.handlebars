@@ -22,10 +22,7 @@
       </li>
       {{#unless auth}}
       <li class="nav-item">
-        <a class="nav-link" href="/signup">Sign up</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link btn btn-primary text-white" href="/login">Sign In</a>
       </li>
       {{else}}
       <li class="nav-item dropdown">
@@ -34,7 +31,7 @@
           {{auth.username}}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a href="#" class="dropdown-item">My Account</a></li>
+          <li><a href="/myaccount" class="dropdown-item">My Account</a></li>
           <hr>
           <li><a href="/logout" class="dropdown-item">Logout</a></li>
         </ul>
