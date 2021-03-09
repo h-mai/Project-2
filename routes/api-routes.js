@@ -1,6 +1,9 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const sgMail = require("@sendgrid/mail");
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -19,10 +22,22 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
     db.User.create({
+      username: req.body.username,
       email: req.body.email,
       password: req.body.password
     })
       .then(() => {
+        sgMail
+          .send({
+            to: req.body.email,
+            from: "noreply@betti.com",
+            subject: "Verify your account",
+            html: "TODO: Add content"
+          })
+          .then(() => {
+            console.log("Email sent");
+          })
+          .catch(e => console.log(e));
         res.redirect(307, "/api/login");
       })
       .catch(err => {
@@ -45,8 +60,9 @@ module.exports = function(app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
+        id: req.user.id,
         email: req.user.email,
-        id: req.user.id
+        username: req.user.username
       });
     }
   });

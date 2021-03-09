@@ -5,6 +5,8 @@ const db = require("../models");
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+const isAuthenticated = require("../config/middleware/isAuthenticated");
+
 module.exports = app => {
   // For all bets
   app.get("/bets", (req, res) => {
@@ -60,23 +62,22 @@ module.exports = app => {
   });
 
   // Create a bet
-  app.post("/api/create_bet", async (req, res) => {
+  app.post("/api/create_bet", isAuthenticated, async (req, res) => {
     // Get all of the bet details from the body
     const betTitle = req.body.betTitle;
-    const user1Raw = req.body.user1;
-    // TODO this needs to be sqapped out with athe user id provided by passport.
+    const user1 = req.user.id;
     const user2Raw = req.body.user2;
     const wager = req.body.wager;
     const expires = req.body.expires;
 
     const users = db.User.findAll({
       where: {
-        username: [user1Raw, user2Raw]
+        username: [user2Raw]
       },
       raw: true
     })
       .then(users => {
-        // Need this step to get the bettor / bettee in correct order.
+        // TODO this can be coded out now. Need this step to get the bettor / bettee in correct order.
         // It can be removed when the bettor id is pulled from passport
         const orderedUsers = {};
         users.forEach(val => {
@@ -85,7 +86,7 @@ module.exports = app => {
         // Sequelize the new bet
         db.Bet.create({
           betTitle: betTitle,
-          user1: orderedUsers[user1Raw],
+          user1: user1,
           user2: orderedUsers[user2Raw],
           wager: wager,
           expires: expires
@@ -116,17 +117,16 @@ module.exports = app => {
   });
 
   // To accept a bet
-  app.get("/api/accept_bet/:id", (req, res) => {
+  app.get("/api/accept_bet/:id", isAuthenticated, (req, res) => {
     const betId = req.params.id;
-
-    //TODO: Make it so the route checks the logged in user ID against the user ID of the person that's supposed to be accepting the bet
 
     // Find the bet with and ID equal to betId and change its status from pending to accepted
     db.Bet.update(
       { status: 1 },
       {
         where: {
-          id: betId
+          id: betId,
+          user2: req.user.id
         }
       }
     ).then(queryresult => {
@@ -135,7 +135,7 @@ module.exports = app => {
     });
   });
 
-  app.put("/api/upvote/:id", (req, res) => {
+  app.put("/api/upvote/:id", isAuthenticated, (req, res) => {
     const betId = req.params.id;
     const voteDir = req.body.dataVote;
     // set a default variable to update.
@@ -153,5 +153,14 @@ module.exports = app => {
     }).then(queryResult => {
       res.json(queryResult);
     });
+  });
+
+  app.get("/api/testing", isAuthenticated, (req, res) => {
+    if (!req.user) {
+      res.send("Error: You must be authenticated to view this.");
+      return;
+    }
+
+    res.send("Congrats!  You are authenticated.");
   });
 };
