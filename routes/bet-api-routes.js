@@ -28,7 +28,8 @@ module.exports = app => {
       raw: false
     }).then(allBets => {
       const hbsObject = {
-        data: allBets
+        data: allBets,
+        auth: req.user
       };
       res.render("landing", hbsObject);
     });
@@ -60,7 +61,8 @@ module.exports = app => {
     }).then(allBets => {
       const hbsObject = {
         data: allBets,
-        pageNo: pageOffset
+        pageNo: pageOffset,
+        auth: req.user
       };
       res.render("all-bets", hbsObject);
     });
@@ -74,7 +76,8 @@ module.exports = app => {
       }
     }).then(allBets => {
       res.render("all-bets", {
-        data: allBets
+        data: allBets,
+        auth: req.user
       });
     });
   });
@@ -88,7 +91,8 @@ module.exports = app => {
       raw: true
     }).then(oneBet => {
       res.render("one-bet", {
-        data: oneBet
+        data: oneBet,
+        auth: req.user
       });
     });
   });
