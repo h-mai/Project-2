@@ -36,3 +36,25 @@ if (upVoteButtons) {
     });
   });
 }
+
+// Pagination
+const pagination = $(".pagination");
+const recordsCount = pagination.data().count;
+const pageNo = pagination.data().page;
+
+// get the number of pages
+const recordsPerPage = 10;
+const numPages = recordsCount / recordsPerPage;
+console.log("num pages ", numPages, pageNo);
+// if (numPages % recordsPerPage) {
+//   numPages += 1;
+// }
+let pageHtml = "Page:";
+let x = 1;
+
+while (x < numPages) {
+  pageHtml += `&nbsp;<a href="./${x * 10}">${x}</a>&nbsp;`;
+  x++;
+}
+
+pagination.html(pageHtml);

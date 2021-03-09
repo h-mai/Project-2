@@ -5,10 +5,6 @@ const path = require("path");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
-  app.get("/", (req, res) => {
-    res.render("all-bets");
-  });
-
   app.get("/signup", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });

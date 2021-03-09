@@ -8,10 +8,10 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = app => {
-  // For all bets
-  app.get("/bets", (req, res) => {
+  app.get("/", (req, res) => {
     db.Bet.findAll({
-      order: [["expires", "DESC"]],
+      limit: 3,
+      order: [["createdAt", "DESC"]],
       include: [
         {
           model: db.User,
@@ -29,6 +29,38 @@ module.exports = app => {
     }).then(allBets => {
       const hbsObject = {
         data: allBets
+      };
+      res.render("landing", hbsObject);
+    });
+  });
+  // For all bets
+  app.get("/bets/:pageNo?", (req, res) => {
+    let pageOffset = req.params.pageNo;
+    if (pageOffset) {
+      pageOffset = parseInt(pageOffset);
+    }
+    db.Bet.findAndCountAll({
+      limit: 10,
+      offset: pageOffset,
+      order: [["expires", "DESC"]],
+      include: [
+        {
+          model: db.User,
+          as: "bettors",
+          attributes: ["username"]
+        },
+        {
+          model: db.User,
+          as: "bettees",
+          attributes: ["username"]
+        }
+      ],
+      nested: true,
+      raw: false
+    }).then(allBets => {
+      const hbsObject = {
+        data: allBets,
+        pageNo: pageOffset
       };
       res.render("all-bets", hbsObject);
     });
@@ -70,7 +102,7 @@ module.exports = app => {
     const wager = req.body.wager;
     const expires = req.body.expires;
 
-    const users = db.User.findAll({
+    db.User.findAll({
       where: {
         username: [user2Raw]
       },
