@@ -75,27 +75,24 @@ module.exports = app => {
         username: [user2Raw]
       },
       raw: true
-    })
-      .then(users => {
-        // TODO this can be coded out now. Need this step to get the bettor / bettee in correct order.
-        // It can be removed when the bettor id is pulled from passport
-        const orderedUsers = {};
-        users.forEach(val => {
-          orderedUsers[val.username] = val.id;
-        });
-        // Sequelize the new bet
-        db.Bet.create({
-          betTitle: betTitle,
-          user1: user1,
-          user2: orderedUsers[user2Raw],
-          wager: wager,
-          expires: expires
-        });
-      })
-      .then(bet => {
+    }).then(users => {
+      // TODO this can be coded out now. Need this step to get the bettor / bettee in correct order.
+      // It can be removed when the bettor id is pulled from passport
+      const orderedUsers = {};
+      users.forEach(val => {
+        orderedUsers[val.username] = val.id;
+      });
+      // Sequelize the new bet
+      db.Bet.create({
+        betTitle: betTitle,
+        user1: user1,
+        user2: orderedUsers[user2Raw],
+        wager: wager,
+        expires: expires
+      }).then(bet => {
         // Create the email to be sent
         const emailMsg = {
-          to: user2Raw,
+          to: orderedUsers[1].email,
           from: "domenicbeall2@gmail.com",
           subject: "You've been challenged to a friendly bet!",
           html: `<a href="/api/accept_bet/${bet.id}">Click here to accept the bet</a>`
@@ -114,6 +111,7 @@ module.exports = app => {
         // Respond with the created bet as a json object
         res.json(bet);
       });
+    });
   });
 
   // To accept a bet
