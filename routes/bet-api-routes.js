@@ -34,8 +34,11 @@ module.exports = app => {
     });
   });
   // For all bets
-  app.get("/bets", (req, res) => {
+  app.get("/bets/:pageNo?", (req, res) => {
+    const pageOffset = parseInt(req.params.pageNo);
     db.Bet.findAll({
+      limit: 10,
+      offset: pageOffset,
       order: [["expires", "DESC"]],
       include: [
         {
