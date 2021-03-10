@@ -1,59 +1,64 @@
+<div class="container">
+	<div class="card" id="betDisplay">
+		<div class="card-body">
+			<div class="row">
 
-
-<div class="card">
-	<div class="card-body">
-		<div class="row">
-
-			<!-- the left side of the bet card -->
-			<div class="col-md-5">
-				<div class="row">
-					<div class="col-md-4">
-						<span class="badge rounded-pill bg-warning text-dark"><button type="button" class="upvote" data-id="{{dataValues.id}}" data-vote="1"><i class="fas fa-thumbs-up fa-flip-horizontal"></i> {{dataValues.votes1}} upvotes</button></span>
-					</div>
-					<div class="col-md-4">
-						<p><u>{{bettors.dataValues.username}}</u> {{dataValues.betTitle}}</p>
-					</div>
-					<div class="col-md-4">
-						<span class="badge rounded-pill bg-light text-dark">
-							avatar {{bettors.dataValues.username}}
-						</span>
-					</div>
-				</div>
-			</div>
-
-			<!-- the centre of the bet card -->
-			<div class="col-md-2 d-flex justify-content-center">
-				<div class="row">
-					<div class="col-md-12">
-						<h1 class="heading-centered">V</h1>
-						<button type="button" class="btn btn-primary">
-							{{dataValues.wager}}
-						</button>
+				<!-- the left side of the bet card -->
+				<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-4">
+							<span class="badge rounded-pill bg-warning text-dark"><button type="button" class="upvote"
+									data-id="{{dataValues.id}}" data-vote="1"><i
+										class="fas fa-thumbs-up fa-flip-horizontal"></i> {{dataValues.votes1}}
+									upvotes</button></span>
+						</div>
+						<div class="col-md-4">
+							<p><u>{{bettors.dataValues.username}}</u> {{dataValues.betTitle}}</p>
+						</div>
+						<div class="col-md-4">
+							<span class="badge rounded-pill bg-light text-dark">
+								{{bettors.dataValues.username}}
+							</span>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- the right side of the bet card.-->
-			<div class="col-md-5">
-				<div class="row">
-					<div class="col-md-4">
-						<span class="badge rounded-pill bg-light text-dark">
-							avatar and {{bettees.dataValues.username}}
-						</span>
-
+				<!-- the centre of the bet card -->
+				<div class="col-md-2 d-flex justify-content-center">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="heading-centered">V</h1>
+							<button type="button" class="btn btn-primary">
+								{{dataValues.wager}}
+							</button>
+						</div>
 					</div>
-
-					<div class="col-md-4">
-						<p>This bet is pending. (status={{dataValues.status}})</p>
-					</div>
-
-					<div class="col-md-4">
-						<span class="badge rounded-pill bg-warning text-dark"><button type="button" class="upvote" data-id="{{dataValues.id}}" data-vote="2"><i class="fas fa-thumbs-up"></i> {{dataValues.votes2}} upvotes</button></span>
-					</div>
-
 				</div>
-			</div>
 
+				<!-- the right side of the bet card.-->
+				<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-4">
+							<span class="badge rounded-pill bg-light text-dark">
+								{{bettees.dataValues.username}}
+							</span>
+
+						</div>
+
+						<div class="col-md-4">
+							<p>This bet is pending. (status={{dataValues.status}})</p>
+						</div>
+
+						<div class="col-md-4">
+							<span class="badge rounded-pill bg-warning text-dark"><button type="button" class="upvote"
+									data-id="{{dataValues.id}}" data-vote="2"><i class="fas fa-thumbs-up"></i>
+									{{dataValues.votes2}} upvotes</button></span>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
 		</div>
 	</div>
 </div>
