@@ -1,17 +1,48 @@
-
-.jumbotron {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: transparent;
-}
-
 body {
+  font-family: 'Inter', sans-serif;
   background-color: transparent;
 }
 
-footer #bottomNav {
+.smallTitle {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  width: 100%;
+  border-radius: 999px;
+  height: auto;
+  background-color: rgb(156, 145, 229);
+  align-items: center;
+  text-align: center;
+  position: relative;
+  letter-spacing: 5px;
+
+  
+}
+
+.largeTitle {
+  padding-top: 100px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 96px;
+  line-height: 104px;
+  /* identical to box height, or 108% */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -3px;
+  /* Black */
+  color: #2D3436;
+  /* Text Shadow / Coral */
+  text-shadow: 0px 4px 0px lightcoral;
+  
+}
+
+#bottomNav {
   background-color: transparent;
   overflow: hidden;
-  position: fixed;
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 100px;
@@ -23,10 +54,23 @@ footer #bottomNav {
   padding-left: 50px;
 }
 
+#signin {
+  background-color: lightcoral;
+  border-radius: 999px;
+  position: absolute;
+  right: 50px;
+}
+
 /* #create-bet {
   padding-top: 100px;
 } */
 
+#betDisplay {
+
+  margin-bottom: 20px;
+  border-radius: 999px;
+  
+}
 .container {
   padding-left: 150px;
   padding-right: 150px;
@@ -107,3 +151,29 @@ form.signup, form.login {
 .tt-suggestion p {
   margin: 0;
 }
+
+
+/* Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { 
+  width: 100%;
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+
+ }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+ }
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+
+ }
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) { 
+
+ }
