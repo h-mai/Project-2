@@ -18,19 +18,19 @@ module.exports = function(app) {
   });
 
   app.get("/createbet", isAuthenticated, (req, res) => {
-    res.render("createbet");
+    res.render("createbet", { auth: req.user });
   });
 
   app.get("/allbets", (req, res) => {
     // Users can view all existing bets
-    res.render("allbets");
+    res.render("allbets", { auth: req.user });
   });
 
   app.get("/faqs", (req, res) => {
-    res.render("faqs");
+    res.render("faqs", { auth: req.user });
   });
 
   app.get("/aboutus", (req, res) => {
-    res.render("aboutUs");
+    res.render("aboutUs", { auth: req.user });
   });
 };
