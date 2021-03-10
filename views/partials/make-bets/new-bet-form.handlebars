@@ -1,35 +1,32 @@
-<form id="create-bet">
-	<div class="form-group">
-		<label for="betTitle">What's the bet about?</label>
-		<input type="text" class="form-control" id="betTitle" aria-describedby="betTitleHelp" placeholder="Collingwood to win the 2021 AFL Grand Final">
-		<small id="betTitleHelp" class="form-text text-muted">Put in a descriptive title for your bet.</small>
-	</div>
+<div class="card p-3 mt-2">
+	<form id="create-bet">
+		<div class="form-group">
+			<label for="betTitle">What's the bet about?</label>
+			<input type="text" class="form-control" id="betTitle" aria-describedby="betTitleHelp"
+				placeholder="Collingwood to win the 2021 AFL Grand Final">
+			<small id="betTitleHelp" class="form-text text-muted">Put in a descriptive title for your bet.</small>
+		</div>
 
-	<!-- TODO this can be removed once passport is implemented correctly-->
-	<div class="form-group">
-		<label for="betFrom">Who are you?</label>
-		<input type="text" class="form-control bet-against" id="betFrom" aria-describedby="betFromHelp" placeholder="Who is the bet with?">
-		<small id="betFromHelp" class="form-text text-muted">Select your name from the list below</small>
-	</div>
-	<!-- end removal section -->
+		<div class="form-group">
+			<label for="betAgainst">Who are you betting?</label>
+			<input type="text" class="form-control bet-against" id="betAgainst" aria-describedby="betAgainstHelp"
+				placeholder="Who is the bet with?">
+			<small id="betAgainstHelp" class="form-text text-muted">Select the person you're betting against.</small>
+		</div>
+		<div class="form-group">
+			<label for="wager">How many points are you betting?</label>
+			<input type="number" class="form-control" id="wager" aria-describedby="wagerHelp" placeholder="Wager amount">
+			<small id="wagerHelp" class="form-text text-muted">This is not real money! Enter the points you'd like to
+				bet.</small>
+		</div>
+		<div class="form-group">
+			<label for="expiration">When does the bet expire?</label>
+			<input type="datetime-local" class="form-control" id="expiration" aria-describedby="expirationHelp">
+			<small id="expirationHelp" class="form-text text-muted">See our FAQ's if you need help deciding :)</small>
+		</div>
 
-	<div class="form-group">
-		<label for="betAgainst">Who are you betting?</label>
-		<input type="text" class="form-control bet-against" id="betAgainst" aria-describedby="betAgainstHelp" placeholder="Who is the bet with?">
-		<small id="betAgainstHelp" class="form-text text-muted">Select the person you're betting against.</small>
-	</div>
-	<div class="form-group">
-		<label for="wager">How many points are you betting?</label>
-		<input type="number" class="form-control" id="wager" aria-describedby="wagerHelp" placeholder="Wager amount">
-		<small id="wagerHelp" class="form-text text-muted">This is not real money! Enter the points you'd like to bet.</small>
-	</div>
-	<div class="form-group">
-		<label for="expiration">When does the bet expire?</label>
-		<input type="datetime-local" class="form-control" id="expiration" aria-describedby="expirationHelp">
-		<small id="expirationHelp" class="form-text text-muted">See our FAQ's if you need help deciding :)</small>
-	</div>
-
-	<div class="form-group">
-		<button type="submit" id="goTime" class="btn btn-outline-warning new-bet">Bet!</button>
-	</div>
-</form>
+		<div class="form-group">
+			<button type="submit" id="goTime" class="btn btn-outline-warning new-bet">Bet!</button>
+		</div>
+	</form>
+</div>
