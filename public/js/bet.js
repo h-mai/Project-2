@@ -53,7 +53,7 @@ let pageHtml = "Page:";
 let x = 1;
 
 while (x < numPages) {
-  pageHtml += `&nbsp;<a href="./${x * 10}">${x}</a>&nbsp;`;
+  pageHtml += `&nbsp;<a href="./bets/${x * 10}">${x}</a>&nbsp;`;
   x++;
 }
 
