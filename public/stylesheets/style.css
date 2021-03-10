@@ -1,10 +1,10 @@
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: transparent;
 }
 
 .smallTitle {
-  font-family: Inter;
+  font-family: "Inter";
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
@@ -21,8 +21,8 @@ body {
 }
 
 .largeTitle {
-  padding-top: 100px;
-  font-family: Inter;
+  padding-top: 50px;
+  font-family: "Inter";
   font-style: normal;
   font-weight: 800;
   font-size: 96px;
@@ -39,15 +39,29 @@ body {
   
 }
 
-#bottomNav {
-  background-color: transparent;
-  overflow: hidden;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  height: 100px;
+#betDisplay {
+  margin: auto;
+  border-radius: 999px;
 }
 
+#bottomNav {
+  
+  background: rgb(255, 234, 236);
+  
+}
+
+
+.nav-link {
+  color: #2D3436;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: contents;
+  color: #2D3436;
+  font-weight: bold;
+
+}
 #bettiLogo {
   width: 150px;
   height: auto;
@@ -65,15 +79,22 @@ body {
   padding-top: 100px;
 } */
 
-#betDisplay {
 
-  margin-bottom: 20px;
-  border-radius: 999px;
-  
-}
 .container {
   padding-left: 150px;
   padding-right: 150px;
+  margin-bottom: 10px;
+  
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  background-clip: border-box;
+  margin-bottom: 20px;
+  
 }
 
 html {
@@ -85,8 +106,11 @@ form.signup, form.login {
   margin-top: 50px;
 }
 
+
 #create-bet {
   background-color: transparent;
+  padding-bottom: 50px;
+
 }
 
 .heading-centered {
