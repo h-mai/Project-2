@@ -6,15 +6,22 @@ body {
 }  
 
 .smallTitle {
+font-family: Inter;
+font-style: normal;
+font-weight: 800;
+font-size: 20px;
+float: center;
+text-align: center;
+background-color: rgb(154, 141, 226);
+border-radius: 999px;
+height: auto;
+width:unset
 
-position: relative;
-height: 104px;
-left: 9.38%;
-right: 9.38%;
-top: 176px;
+
 }
 
 .largeTitle {
+padding-top: 100px;
 font-family: Inter;
 font-style: normal;
 font-weight: 800;
@@ -28,8 +35,8 @@ letter-spacing: -3px;
 
 /* Black */
 color: #2D3436;
-/* Text Shadow / White */
-text-shadow: 0px 4px 0px #FFFFFF;
+/* Text Shadow / Coral */
+text-shadow: 0px 4px 0px lightcoral;
 
 }
 
@@ -48,6 +55,15 @@ footer #bottomNav {
   padding-left: 50px;
 }
 
+
+#signin  {
+  background-color: lightcoral;
+  border-radius: 999px;
+  position: absolute;
+  right: 50px;
+
+
+}
 /* #create-bet {
   padding-top: 100px;
 } */

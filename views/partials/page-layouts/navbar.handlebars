@@ -21,8 +21,8 @@
         <a class="nav-link" href="/">Create a Bet</a>
       </li>
       {{#unless auth}}
-      <li class="nav-item">
-        <a class="nav-link btn btn-primary text-white" href="/login">Sign In</a>
+      <li class="nav-item" id="signin">
+        <a class="nav-link btn text-white"  href="/login">Sign In</a>
       </li>
       {{else}}
       <li class="nav-item dropdown">
