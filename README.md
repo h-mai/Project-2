@@ -9,7 +9,7 @@ The more betti’s involved, the more users are able to contribute, vote and get
 
 
 # User Story 
-
+```
 WHEN the first user makes a bet 
 THEN the second user will then be notified via email of the deatils of the bet and wager
 THEN the second user can accept or add modifications to the bet
@@ -18,7 +18,7 @@ THEN the end date will be synced to BOTH users calendars
 THEN either user will need to perform the bet before the end date
 WHEN the end date is reached either user can determine who has won lost or drawn. 
 THEN a public record of the bets between these two users can be displayed on the page (hall of fame page)
-
+```
 # MVPs
 
 - creating a database
