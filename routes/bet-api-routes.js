@@ -64,7 +64,7 @@ module.exports = app => {
         pageNo: pageOffset,
         auth: req.user
       };
-      res.render("all-bets", hbsObject);
+      res.render("allbets", hbsObject);
     });
   });
 
@@ -75,7 +75,7 @@ module.exports = app => {
         catId: req.params.catId
       }
     }).then(allBets => {
-      res.render("all-bets", {
+      res.render("allbets", {
         data: allBets,
         auth: req.user
       });
