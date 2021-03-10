@@ -150,24 +150,49 @@ module.exports = app => {
     });
   });
 
-  // To accept a bet
+  // ACCEPT BET API URL
   app.get("/api/accept_bet/:id", isAuthenticated, (req, res) => {
     const betId = req.params.id;
 
     // Find the bet with and ID equal to betId and change its status from pending to accepted
-    db.Bet.update(
-      { status: 1 },
-      {
-        where: {
-          id: betId,
-          user2: req.user.id
-        }
-      }
-    ).then(queryresult => {
+    acceptBet(betId, req.user.id).then(queryresult => {
       // Send the result of the query back
       res.json(queryresult);
     });
   });
+
+  // ACCEPT BET USER LINK
+  app.get("/accept_bet/:id", isAuthenticated, (req, res) => {
+    const betId = req.params.id;
+    acceptBet(betId, req.user.id).then(result => {
+      if (result[0]) {
+        // Success
+        res.render("message", {
+          goodNews: true,
+          content: "You have accepted the bet!  Let the games begin!"
+        });
+      } else {
+        // No good
+        res.render("message", {
+          goodNews: false,
+          content: "This bet has already been accepted or doesn't exist :("
+        });
+      }
+    });
+  });
+
+  const acceptBet = (id, user2) => {
+    return db.Bet.update(
+      { status: 1 },
+      {
+        where: {
+          id: id,
+          user2: user2,
+          status: 0
+        }
+      }
+    );
+  };
 
   app.put("/api/upvote/:id", isAuthenticated, (req, res) => {
     const betId = req.params.id;
