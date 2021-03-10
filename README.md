@@ -1,10 +1,14 @@
-# Project-2
+# Betti
 
-PsuedoCode
+![alt text](https://raw.githubusercontent.com/h-mai/Project-2/main/public/assets/images/bettiLogo.png)
 
-User Story - Betting App between 2 Friends 
+# Concept
+This is Betti. Feeling competitive? Want to set ridiculous wagers? Like setting friendly bets between mates? You betcha. 
+Betti is a simple and easy way to make non-monetary bets between friends. Simply sign up, set your bet, make your wager and send it to a friend. Once they accept, it’s game on. 
+The more betti’s involved, the more users are able to contribute, vote and get inspiration for the next friendly bet to make. 
 
-Users - 2 people can create a friendly bet between eachother for with in a predetermined period of time 
+
+# User Story 
 
 WHEN the first user makes a bet 
 THEN the second user will then be notified via email of the deatils of the bet and wager
@@ -13,46 +17,42 @@ IF modifications are made the first user must approve (handshake)
 THEN the end date will be synced to BOTH users calendars 
 THEN either user will need to perform the bet before the end date
 WHEN the end date is reached either user can determine who has won lost or drawn. 
-THEN a public record of the bets between these two users can be displayed on the page (highscores page)
+THEN a public record of the bets between these two users can be displayed on the page (hall of fame page)
 
-Users can create multiple bets with multiple statuses - APPROVED, PENDING, ENDED 
+# MVPs
 
-MVP:
+- creating a database
+- incorporating API features to the app
+- ability to GET and POST requests
+- ability to send authorisation emails to users
+- polished design 
+- clean MVC 
+- successful deployment on heroku
 
--database
--API - googlecalendar
--sending emails
--date/time library
--css library, bootstrap
--figma for wireframing
--passport - signin authentication
+# Tech/Language/Libraries Used
 
-Bets Table inputs:
+- mysql
+- node.js
+- express
+- npm
+- css/bootstrap
+- handlebars
+- javascript
+- google calendar
+- heroku
+- postman 
+- travis CI / linter
 
-id 
-userID1
-userID2
-Wager
-Bet
-TimeCreated
-TimeExpire
-Votes1
-Votes2
-Winner (won, lost, draw)
-Status (approve, pending, ended)
+ # Future developments
 
-User Table inputs: 
+- changing points/dare wagers to money
+- duplicate the bet to use as you own
+- integrate to pay gateways 
+- mobile app and notifications
 
-id
-name
-email 
-password
+# Developers
 
-Stretch Goals:
-
--changing points system to money
--duplicate the bet to use as you own
--integrate to pay gateways 
--mobile app and notifications
-
-
+Nathan Opresnik: @nopresnik
+Justin Reid: @JayArghArgh
+Domenic Beall: @DomenicBeall
+Han Mai: @h-mai
