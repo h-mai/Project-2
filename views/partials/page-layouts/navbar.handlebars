@@ -14,14 +14,14 @@
        <li class="nav-item">
         <a class="nav-link" href="/bets">Previous Bets</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/createbet">Create a Bet</a>
-      </li>
       {{#unless auth}}
       <li class="nav-item">
         <a class="nav-link btn text-white" id="signin" href="/login">Sign In</a>
       </li>
       {{else}}
+      <li class="nav-item">
+        <a class="nav-link" href="/createbet">Create a Bet</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
           {{!-- <i class="fas fa-user"></i> --}}
