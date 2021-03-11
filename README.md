@@ -2,6 +2,11 @@
 
 ![alt text](https://raw.githubusercontent.com/h-mai/Project-2/main/public/assets/images/bettiLogo.png)
 
+# Links
+
+Heroku Deployment: https://boiling-mountain-46833.herokuapp.com/
+Github Repo: https://github.com/h-mai/Project-2.git
+
 # Concept
 This is Betti. Feeling competitive? Want to set ridiculous wagers? Like setting friendly bets between mates? You betcha. 
 Betti is a simple and easy way to make non-monetary bets between friends. Simply sign up, set your bet, make your wager and send it to a friend. Once they accept, it’s game on. 
