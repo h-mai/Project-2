@@ -45,7 +45,15 @@
 						</div>
 
 						<div class="col-md-4">
-							<p>This bet is pending.</p>
+							{{#ifeq dataValues.status 0}}
+								<p>Pending</p>
+							{{/ifeq}}
+							{{#ifeq dataValues.status 1}}
+								<p>Awaiting result</p>
+							{{/ifeq}}
+							{{#ifeq dataValues.status 2}}
+								<p>Expired</p>
+							{{/ifeq}}
 						</div>
 
 						<div class="col-md-4">
