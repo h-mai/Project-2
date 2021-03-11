@@ -41,6 +41,7 @@ body {
   margin: auto;
   border-radius: 999px;
   text-align: center;
+  border: #2D3436 3px solid;
 }
 
 #bottomNav {
