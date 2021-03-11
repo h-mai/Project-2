@@ -11,13 +11,11 @@ body {
   width: 100%;
   border-radius: 999px;
   height: auto;
-  background-color: rgb(156, 145, 229);
+  background-color: lightcoral;
   align-items: center;
   text-align: center;
   position: relative;
-  letter-spacing: 5px;
-
-  
+  letter-spacing: 5px;  
 }
 
 .largeTitle {
@@ -42,6 +40,7 @@ body {
 #betDisplay {
   margin: auto;
   border-radius: 999px;
+  text-align: center;
 }
 
 #bottomNav {
