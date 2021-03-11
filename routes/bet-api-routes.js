@@ -128,7 +128,7 @@ module.exports = app => {
         to: user2.email,
         from: "domenicbeall2@gmail.com",
         subject: "You've been challenged to a friendly bet!",
-        html: `<a href="/accept_bet/${bet.id}">Click here to accept the bet</a>`
+        html: `<a href="https://boiling-mountain-46833.herokuapp.com/accept_bet/${bet.id}">Click here to accept the bet</a>`
       };
 
       // Send the email using sgmail
@@ -141,8 +141,8 @@ module.exports = app => {
           console.log(error);
         });
 
-      // Respond with the created bet as a json object
-      res.json(bet);
+      // Redirect to home
+      res.redirect("/");
     });
   });
 

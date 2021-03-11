@@ -1,11 +1,11 @@
 <div class="container">
 	<div class="card" id="betDisplay">
 		<div class="card-body">
-			<div class="row">
+			<div class="row align-items-center">
 
 				<!-- the left side of the bet card -->
 				<div class="col-md-5">
-					<div class="row">
+					<div class="row align-items-center">
 						<div class="col-md-4">
 							<span class="badge rounded-pill bg-warning text-dark"><button type="button" class="upvote"
 									data-id="{{dataValues.id}}" data-vote="1"><i
@@ -17,7 +17,7 @@
 						</div>
 						<div class="col-md-4">
 							<span class="badge rounded-pill bg-light text-dark">
-								{{bettors.dataValues.username}}
+								<span style="font-size: 1rem;">{{bettors.dataValues.username}}</span>
 							</span>
 						</div>
 					</div>
@@ -37,16 +37,15 @@
 
 				<!-- the right side of the bet card.-->
 				<div class="col-md-5">
-					<div class="row">
+					<div class="row align-items-center">
 						<div class="col-md-4">
 							<span class="badge rounded-pill bg-light text-dark">
-								{{bettees.dataValues.username}}
+								<span style="font-size: 1rem;">{{bettees.dataValues.username}}</span>
 							</span>
-
 						</div>
 
 						<div class="col-md-4">
-							<p>This bet is pending. (status={{dataValues.status}})</p>
+							<p>This bet is pending.</p>
 						</div>
 
 						<div class="col-md-4">

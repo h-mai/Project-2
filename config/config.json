@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": "(Hanzy1412)",
+    "password": "Bedo113#",
     "database": "betti",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "(Hanzy1412)",
-    "database": "database_test",
+    "password": "Bedo113#",
+    "database": "betti",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
